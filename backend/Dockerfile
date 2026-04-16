@@ -5,6 +5,7 @@ ARG NODE_ENV=development
 ENV NODE_ENV=${NODE_ENV}
 WORKDIR /home/node/app
 COPY --chown=node:node package*.json ./
+RUN npm install
 COPY --chown=node:node . .
 COPY --chown=node:node entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
