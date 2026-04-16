@@ -1,5 +1,4 @@
 # compose.yml
-name: fstack_project
 services:
   db:
     image: postgres:alpine3.22
