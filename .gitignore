@@ -1,0 +1,68 @@
+# ==========================================
+# 1. Dependencies (node_modules)
+# ==========================================
+# يتجاهل مجلدات node_modules في أي مكان في المشروع
+**/node_modules/
+
+# ==========================================
+# 2. Build Artifacts
+# ==========================================
+# NestJS build folder
+backend/dist/
+# NextJS build folder
+frontend/.next/
+frontend/out/
+# TypeScript build info
+*.tsbuildinfo
+
+# ==========================================
+# 3. Environment Variables & Secrets
+# ==========================================
+# منع ملفات البيئة في الجذر
+.env
+.env.*
+
+# منع ملفات البيئة في أي مكان داخل المجلدات الفرعية (backend/frontend)
+**/ .env
+**/ .env.*
+
+# استثناء ملفات الأمثلة فقط (لأننا نريد رفعها)
+!**/.env.example
+
+# يتجاهل ملفات الأسرار النصية (إذا استخدمت Docker Secrets بملفات .txt)
+secrets/*.txt
+db_password.txt
+
+# ==========================================
+# 4. Database (PostgreSQL Data)
+# ==========================================
+# هام جداً: يتجاهل المجلد الذي يخزن فيه Docker بيانات القاعدة الفعلية
+# افترضنا هنا أنك سميت المجلد "data" داخل مجلد "db"
+db/data/
+pgdata/
+
+# ==========================================
+# 5. Docker Logs & Temp Files
+# ==========================================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.docker/
+*.log
+
+# ==========================================
+# 6. Operating System Files
+# ==========================================
+.DS_Store
+.DS_Store?
+_MACOSX
+Thumbs.db
+ehthumbs.db
+
+# ==========================================
+# 7. IDE Settings (Optional but Recommended)
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo

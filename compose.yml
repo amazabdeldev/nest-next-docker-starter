@@ -1,0 +1,24 @@
+# compose.yml
+name: fstack_project
+services:
+  db:
+    image: postgres:alpine3.22
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - fstack-network
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    networks:
+      - fstack-network
+networks:
+  fstack-network:
+    name: fstack-network
+    driver: bridge
+

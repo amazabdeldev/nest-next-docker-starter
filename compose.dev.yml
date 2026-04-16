@@ -1,0 +1,35 @@
+# compose.dev.yml
+services:
+
+  db:
+    container_name: postgresdb-dev
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./backend/.env.development
+    volumes:
+      - ./db:/var/lib/postgresql/data
+
+  backend:
+    image: nestjs-dev:latest
+    container_name: server-dev
+    build:
+      target: development
+      args:
+        - NODE_ENV=${NODE_ENV}
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./backend/.env.development
+    volumes:
+      - ./backend:/home/node/app
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD","node", "-e", "fetch('http://localhost:3000/health').then(r => r.ok ? process.exit(0) : process.exit(1)).catch(() => process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
