@@ -23,7 +23,7 @@ A professional, production-ready boilerplate for building full-stack application
 
 ### 1. Clone the repository
 ```bash
-git clone [https://github.com/amazabdeldev/nest-next-docker-starter.git](https://github.com/amazabdeldev/nest-next-docker-starter.git)
+git clone https://github.com/amazabdeldev/nest-next-docker-starter.git
 cd nest-next-docker-starter
 ```
 
