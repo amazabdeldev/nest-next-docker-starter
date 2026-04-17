@@ -9,15 +9,14 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - fstack-network
+      - app-network
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
     networks:
-      - fstack-network
+      - app-network
 networks:
-  fstack-network:
-    name: fstack-network
+  app-network:
     driver: bridge
 

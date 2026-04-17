@@ -2,8 +2,6 @@
 services:
 
   db:
-    image: postgres:alpine3.22
-    restart: always
     container_name: postgresdb-prod
     env_file:
       - ./backend/.env.production
@@ -19,14 +17,14 @@ services:
         - NODE_ENV=${NODE_ENV}
     restart: always
     ports:
-      - "3000:3000"
+      - "${PORT}:3000"
     env_file:
       - ./backend/.env.production
     depends_on:
       db:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/health').then(r => r.ok ? process.exit(0) : process.exit(1)).catch(() => process.exit(1))"]
+      test: ["CMD", "node", "-e", "fetch(`http://localhost:${PORT}/health`).then(r => r.ok ? process.exit(0) : process.exit(1)).catch(() => process.exit(1))"]
       interval: 30s
       timeout: 5s
       retries: 3
