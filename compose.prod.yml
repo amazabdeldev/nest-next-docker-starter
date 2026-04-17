@@ -10,7 +10,6 @@ services:
 
   backend:
     image: nestjs-prod:latest
-    container_name: server-prod
     build:
       target: production
       args:

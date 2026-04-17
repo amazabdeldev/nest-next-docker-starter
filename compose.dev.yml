@@ -12,7 +12,6 @@ services:
 
   backend:
     image: nestjs-dev:latest
-    container_name: server-dev
     build:
       target: development
       args:
