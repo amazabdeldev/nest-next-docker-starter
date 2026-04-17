@@ -25,6 +25,7 @@ A professional, production-ready boilerplate for building full-stack application
 ```bash
 git clone [https://github.com/amazabdeldev/nest-next-docker-starter.git](https://github.com/amazabdeldev/nest-next-docker-starter.git)
 cd nest-next-docker-starter
+```
 
 ### 2. Set up Environment Variables
 Copy the example environment file and adjust it as needed: 
