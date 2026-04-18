@@ -2,7 +2,6 @@
 services:
 
   db:
-    container_name: postgresdb-prod
     env_file:
       - ./backend/.env.production
     volumes:
