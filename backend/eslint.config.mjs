@@ -11,6 +11,8 @@ const eslingConfig = defineConfig(
         ignores: [
             '**/node_modules/**',
             '**/dist/**',
+            '**/build/**',
+            '**/*.d.ts',
             // '**/prisma/migrations/**',
             // 'src/generated/**',
             'eslint.config.mjs',
